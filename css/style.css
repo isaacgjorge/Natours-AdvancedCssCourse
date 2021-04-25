@@ -8,8 +8,9 @@ Dark green: #28b485
 */
 
 * {
-    /* by default, browsers always put some margins and padding on elements 
-    margin: 0; e padding: 0; servem para remover estes espacos
+    /* 
+        by default, browsers always put some margins and padding on elements 
+        margin: 0; e padding: 0; servem para remover estes espacos
     */
     margin: 0;
     padding: 0;
@@ -34,7 +35,8 @@ body {
     /* vh is the porcentage of the size that the element will take of the viewPort (ex: browser) */
     height: 95vh;
 
-    /* put and background-image 
+    /* 
+        put and background-image 
         linear-gradient allow us to add gradiantes as backgorund images.
         In the following example the gradient is being added on the top of the background-image
     */
@@ -47,14 +49,17 @@ body {
     /* no matter the size of the box, *cover* will always try to fit the image inside the box */
     background-size: cover;
 
-    /* the image will always display the top of the image, when the page is resized the image
-    will be croped the the end but the top shall remain */
+    /* 
+        the image will always display the top of the image, when the page is resized the image
+        will be croped the the end but the top shall remain 
+    */
     background-position: top;
 
-    /* crop the image in the format that you define. Each parameter is a point on the image.
-    You define here the area where can see the image.
-    
-    https://bennettfeely.com/clippy/
+    /* 
+        crop the image in the format that you define. Each parameter is a point on the image.
+        You define here the area where can see the image.
+        
+        https://bennettfeely.com/clippy/
     */
      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
 
@@ -75,16 +80,20 @@ body {
 }
 
 .text-box{
-    /* This is how you can center a box in the middle of a container. 
-    In the case of position absolute, his reference is the browser */
+    /* 
+        This is how you can center a box in the middle of a container. 
+        In the case of position absolute, his reference is the browser 
+    */
     position: absolute;
 
     /* top and left are in relation of the parent element */
     top: 40%;
     left: 50%;
 
-    /* changes the reference position where top and left takes to position the element.
-    this is in relation on the element itself */
+    /* 
+        Changes the reference position where top and left takes to position the element.
+        this is in relation on the element itself 
+    */
     transform: translate(-50%, -50%);
 }
 
@@ -94,8 +103,9 @@ body {
 }
 
 .heading-primary-main {
-    /* block elements ocuupies the entyre width that they are
-        Display changes the level os presentation of the tag
+    /* 
+        Display changes the level os presentation of the tag.
+        Block elements ocuupies the entyre width that they are.
     */
     display: block;
     font-size: 60px;
