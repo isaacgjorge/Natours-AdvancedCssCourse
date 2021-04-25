@@ -1,0 +1,112 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    /* by default, browsers always put some margins and padding on elements 
+    margin: 0; e padding: 0; servem para remover estes espacos
+    */
+    margin: 0;
+    padding: 0;
+
+    /* the padding and margin are no longer added to the total height and total width */
+    box-sizing: border-box;
+}
+
+body {
+    /* everything related to font we spacified in the body */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+
+    /* padding is not inherited */
+    padding: 30px;
+}
+
+.header {
+    /* vh is the porcentage of the size that the element will take of the viewPort (ex: browser) */
+    height: 95vh;
+
+    /* put and background-image 
+        linear-gradient allow us to add gradiantes as backgorund images.
+        In the following example the gradient is being added on the top of the background-image
+    */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 133, 0.8)),
+        url(../img/hero.jpg);
+
+    /* no matter the size of the box, *cover* will always try to fit the image inside the box */
+    background-size: cover;
+
+    /* the image will always display the top of the image, when the page is resized the image
+    will be croped the the end but the top shall remain */
+    background-position: top;
+
+    /* crop the image in the format that you define. Each parameter is a point on the image.
+    You define here the area where can see the image.
+    
+    https://bennettfeely.com/clippy/
+    */
+     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
+
+     /* make the child components use this tag as a position reference */
+     position: relative;
+}
+
+.logo-box {
+    position: absolute;
+
+    /* uses the parent element with position:relative as a reference position */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;    
+}
+
+.text-box{
+    /* This is how you can center a box in the middle of a container. 
+    In the case of position absolute, his reference is the browser */
+    position: absolute;
+
+    /* top and left are in relation of the parent element */
+    top: 40%;
+    left: 50%;
+
+    /* changes the reference position where top and left takes to position the element.
+    this is in relation on the element itself */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: white;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    /* block elements ocuupies the entyre width that they are
+        Display changes the level os presentation of the tag
+    */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
