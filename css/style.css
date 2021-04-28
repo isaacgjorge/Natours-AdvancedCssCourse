@@ -7,6 +7,7 @@ Dark green: #28b485
 
 */
 
+/* Universal selector. It applies what is described in it to all elements of the page */
 * {
     /* 
         by default, browsers always put some margins and padding on elements 
@@ -95,23 +96,44 @@ body {
         this is in relation on the element itself 
     */
     transform: translate(-50%, -50%);
+
+    text-align: center;
 }
 
 .heading-primary {
     color: white;
     text-transform: uppercase;
+    
+    /* backface-visibility: hidden; */
+
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
     /* 
         Display changes the level os presentation of the tag.
-        Block elements ocuupies the entyre width that they are.
+        Block elements ocupies the entyre width that they are.
     */
     display: block;
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
 
+    /* calls the animation */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+
+    /* starts faster but slow throw the time */
+    animation-timing-function: ease-out;
+
+    /*
+        animation-delay wait some time to begin
+            ex: animation-delay: 3s;
+
+        animation-iteration-count makes the animations repeat by the defined times
+            animation-iteration-count: 3;
+
+    */
 }
 
 .heading-primary-sub {
@@ -119,4 +141,191 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    /* calls an animation */
+    animation-name: moveInRight;
+
+    /* sets the duration of the animation */
+    animation-duration: 1s;
+
+    /* change the velocity of the animation */
+    animation-timing-function: ease-out;
 }
+
+
+/* 
+=====================================
+CODE CLASS 8 BEGINS - css animation on the header text
+=====================================
+*/
+/* give an effect animation */
+@keyframes moveInLeft {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    /* animation fishished */
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* give an effect animation */
+@keyframes moveInRight {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    /* animation fishished */
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 
+=====================================
+CODE CLASS 8 ENDS
+=====================================
+*/
+
+/* 
+=====================================
+CODE CLASS 9  BEGINS - complex animated button
+=====================================
+*/
+
+/* :link, :visited are pseudo class. are special states of a selector */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+
+    /* treats the element as a total block, including the padding, height and so on */
+    display: inline-block;
+
+    /* to align the btn in the middle of his parent, as it is an inline-block, 
+    it is treated as a text to type text-align: center on his parent container.   
+    see .text-box class */
+
+    /* round the corners of the btn */
+    border-radius: 100px;
+
+    /* it is telling that some transition will happens to all properties of this class */
+    transition: all .2s;
+
+    position: relative;
+
+}
+
+.btn:hover {
+    /* this -3px is in relation to the initial state */
+    transform: translatey(-3px);
+
+    /* add the shaddow behind the element */
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active {
+    /* this -1px is in relation to the initial state */
+    transform: translateY(-1px);
+
+    /* add the shaddow behind the element */
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* 
+=====================================
+CODE CLASS 9 ENDS
+=====================================
+*/
+
+
+/* 
+=====================================
+CODE CLASS 10 BEGINS - complex animated button
+=====================================
+*/
+
+/* 
+    pseudo class ::after adds a virtual element to our real element 
+    It is treated as a child of the original element, so it inherits some properties
+*/
+.btn::after {
+    /* need to specify the content and display properties always */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+
+    /* position absolute need a reference, and its reference is the first relative element that 
+    it can finds */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    transition: all .4s;
+}
+
+.btn-white::after{
+    background-color: #fff;
+}
+
+.btn:hover::after{
+    /* transform: scale() increases the size of the element.
+    ex: transform: scale(2); will double the size of the element. */
+
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation-name: moveInBottom;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+
+    animation-delay: .75s;
+
+    /* automatically applies the state to 0% before the animation starts */
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;        
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* 
+=====================================
+CODE CLASS 10 ENDS
+=====================================
+*/
