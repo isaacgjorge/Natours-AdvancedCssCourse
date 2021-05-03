@@ -7,37 +7,71 @@ Dark green: #28b485
 
 */
 
-/* Universal selector. It applies what is described in it to all elements of the page */
-* {
-    /* 
-        by default, browsers always put some margins and padding on elements 
+/* Universal selector. It applies what is described in it to all elements of the page.
+Puting the pseud-classes ::after and ::before we are adding this behavior to the virtual 
+elements as well*/
+*,
+*::after,
+*::before {
+    /*
+        by default, browsers always put some margins and padding on elements
         margin: 0; e padding: 0; servem para remover estes espacos
     */
     margin: 0;
     padding: 0;
 
-    /* the padding and margin are no longer added to the total height and total width */
-    box-sizing: border-box;
+    /*box-sizing is not an inherited property, although we can force this behavior with the 
+    INHERIT value. in this case, it is taking this value from the body (line  62)*/
+    box-sizing: inherit;
+    
 }
+
+/*
+=====================================
+CODE CLASS 18 BEGINS - converting px to rem: An Effective workflow
+=====================================
+*/
+
+/* this is a way to set a global size to font and, when it is needed, change in only one place.
+the rest of the code is changed relative to this. */
+html {
+    /* put 10px here is a technique to simplifies code, once 1rem = 10px 
+    
+    If we put this value in pixels we remove the hability of the user changes the size of the font.
+    That's why we need to put this value in percentage relative to the default value of the browser
+    which is 16px
+    font-size: 10px; */
+
+    font-size: 62.5%; /* this means 62.5% of 16px, that is 10px */
+
+}
+/*
+=====================================
+CODE CLASS 18 ENDS - converting px to rem: An Effective workflow
+=====================================
+*/
 
 body {
     /* everything related to font we spacified in the body */
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
 
     /* padding is not inherited */
-    padding: 30px;
+    padding: 3rem;
+
+    /* the padding and margin are no longer added to the total height and total width */
+    box-sizing: border-box;
 }
 
 .header {
     /* vh is the porcentage of the size that the element will take of the viewPort (ex: browser) */
     height: 95vh;
 
-    /* 
-        put and background-image 
+    /*
+        put and background-image
         linear-gradient allow us to add gradiantes as backgorund images.
         In the following example the gradient is being added on the top of the background-image
     */
@@ -50,40 +84,40 @@ body {
     /* no matter the size of the box, *cover* will always try to fit the image inside the box */
     background-size: cover;
 
-    /* 
+    /*
         the image will always display the top of the image, when the page is resized the image
-        will be croped the the end but the top shall remain 
+        will be croped the the end but the top shall remain
     */
     background-position: top;
 
-    /* 
+    /*
         crop the image in the format that you define. Each parameter is a point on the image.
         You define here the area where can see the image.
-        
+
         https://bennettfeely.com/clippy/
     */
-     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
+     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
      /* make the child components use this tag as a position reference */
      position: relative;
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
 
     /* uses the parent element with position:relative as a reference position */
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;    
+.header__logo {
+    height: 3.5rem;
 }
 
-.text-box{
-    /* 
-        This is how you can center a box in the middle of a container. 
-        In the case of position absolute, his reference is the browser 
+.header__text-box{
+    /*
+        This is how you can center a box in the middle of a container.
+        In the case of position absolute, his reference is the browser
     */
     position: absolute;
 
@@ -91,9 +125,9 @@ body {
     top: 40%;
     left: 50%;
 
-    /* 
+    /*
         Changes the reference position where top and left takes to position the element.
-        this is in relation on the element itself 
+        this is in relation on the element itself
     */
     transform: translate(-50%, -50%);
 
@@ -103,21 +137,21 @@ body {
 .heading-primary {
     color: white;
     text-transform: uppercase;
-    
+
     /* backface-visibility: hidden; */
 
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
-    /* 
+.heading-primary--main {
+    /*
         Display changes the level os presentation of the tag.
         Block elements ocupies the entyre width that they are.
     */
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     /* calls the animation */
     animation-name: moveInLeft;
@@ -136,11 +170,11 @@ body {
     */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     /* calls an animation */
     animation-name: moveInRight;
@@ -153,7 +187,7 @@ body {
 }
 
 
-/* 
+/*
 =====================================
 CODE CLASS 8 BEGINS - css animation on the header text
 =====================================
@@ -163,11 +197,11 @@ CODE CLASS 8 BEGINS - css animation on the header text
     /* before the animation starts */
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     /* animation fishished */
@@ -182,11 +216,11 @@ CODE CLASS 8 BEGINS - css animation on the header text
     /* before the animation starts */
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     /* animation fishished */
@@ -196,13 +230,13 @@ CODE CLASS 8 BEGINS - css animation on the header text
     }
 }
 
-/* 
+/*
 =====================================
 CODE CLASS 8 ENDS
 =====================================
 */
 
-/* 
+/*
 =====================================
 CODE CLASS 9  BEGINS - complex animated button
 =====================================
@@ -213,31 +247,33 @@ CODE CLASS 9  BEGINS - complex animated button
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
 
     /* treats the element as a total block, including the padding, height and so on */
     display: inline-block;
 
-    /* to align the btn in the middle of his parent, as it is an inline-block, 
-    it is treated as a text to type text-align: center on his parent container.   
+    /* to align the btn in the middle of his parent, as it is an inline-block,
+    it is treated as a text to type text-align: center on his parent container.
     see .text-box class */
 
     /* round the corners of the btn */
-    border-radius: 100px;
+    border-radius: 10rem;
 
     /* it is telling that some transition will happens to all properties of this class */
     transition: all .2s;
 
     position: relative;
 
+    font-size: 1.6rem;
+
 }
 
 .btn:hover {
     /* this -3px is in relation to the initial state */
-    transform: translatey(-3px);
+    transform: translateY(-3px);
 
     /* add the shaddow behind the element */
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
 }
 
 .btn:active {
@@ -245,30 +281,30 @@ CODE CLASS 9  BEGINS - complex animated button
     transform: translateY(-1px);
 
     /* add the shaddow behind the element */
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
 
-/* 
+/*
 =====================================
 CODE CLASS 9 ENDS
 =====================================
 */
 
 
-/* 
+/*
 =====================================
 CODE CLASS 10 BEGINS - complex animated button
 =====================================
 */
 
-/* 
-    pseudo class ::after adds a virtual element to our real element 
+/*
+    pseudo class ::after adds a virtual element to our real element
     It is treated as a child of the original element, so it inherits some properties
 */
 .btn::after {
@@ -277,9 +313,9 @@ CODE CLASS 10 BEGINS - complex animated button
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
 
-    /* position absolute need a reference, and its reference is the first relative element that 
+    /* position absolute need a reference, and its reference is the first relative element that
     it can finds */
     position: absolute;
     top: 0;
@@ -290,7 +326,7 @@ CODE CLASS 10 BEGINS - complex animated button
     transition: all .4s;
 }
 
-.btn-white::after{
+.btn--white::after{
     background-color: #fff;
 }
 
@@ -302,7 +338,7 @@ CODE CLASS 10 BEGINS - complex animated button
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation-name: moveInBottom;
     animation-duration: .5s;
     animation-timing-function: ease-out;
@@ -315,7 +351,7 @@ CODE CLASS 10 BEGINS - complex animated button
 
 @keyframes moveInBottom {
     0% {
-        opacity: 0;        
+        opacity: 0;
         transform: translateY(30px);
     }
 
@@ -324,7 +360,7 @@ CODE CLASS 10 BEGINS - complex animated button
         transform: translateY(0);
     }
 }
-/* 
+/*
 =====================================
 CODE CLASS 10 ENDS
 =====================================
